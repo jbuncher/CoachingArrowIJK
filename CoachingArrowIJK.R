@@ -16,3 +16,22 @@ Finished = col_factor(levels = c("True",
 StartDate = col_datetime(format = dateTimeFormat),
 UserLanguage = col_skip()))
 
+
+# Add on columns indicating if each of the questions is correct, "1" for correct and "0" for incorrect
+
+VS_arrow$PreC <- 0
+VS_arrow$PreC[VS_arrow$Q1 == "h.)"] <- 1
+VS_arrow$PostC <- 0
+VS_arrow$PostC[VS_arrow$Q8 == "h.)"] <- 1
+VS_arrow$PracticeQ2C <- 0
+VS_arrow$PracticeQ2C[VS_arrow$Q2 == "g.)"] <- 1
+VS_arrow$PracticeQ3C <- 0
+VS_arrow$PracticeQ3C[VS_arrow$Q3 == "c.)"] <- 1
+VS_arrow$PracticeQ4C <- 0
+VS_arrow$PracticeQ4C[VS_arrow$Q4 == "f.)"] <- 1
+VS_arrow$PracticeQ5C <- 0
+VS_arrow$PracticeQ5C[VS_arrow$Q5 == "e.)"] <- 1
+VS_arrow$TogetherQ6C <- 0
+VS_arrow$TogetherQ6C[VS_arrow$Q6 == "c.)"] <- 1
+VS_arrow$TogetherQ7C <- 0
+VS_arrow$TogetherQ7C[VS_arrow$Q7 == "g.)"] <- 1
