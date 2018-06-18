@@ -65,6 +65,9 @@ VS_ijk_correct <- VS_ijk[26:35]
 VS_arrow_correct <- VS_arrow[24:31]
 
 # Plot Barcharts of Percent correct for each question
+ijk_means <- sapply(VS_ijk_correct, mean)
+arrow_means <- sapply(VS_arrow_correct, mean)
+
 arrow_colors = c("red", "blue", "blue", "blue", "blue", "blue", "blue", "red")
 arrow_density = c(100, 10, 10, 10, 10, 10, 10, 100)
 arrow_angle = c(0, 45,45,45,45,45, -45,0)
