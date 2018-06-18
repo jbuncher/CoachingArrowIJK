@@ -51,10 +51,12 @@ VS_ijk$PracticeQ4[VS_ijk$Q4 == "\\(3 \\hat{i} + -4\\hat{j}\\)"] <- 1
 VS_ijk$PracticeQ5 <- 0
 VS_ijk$PracticeQ5[VS_ijk$Q5 == "\\(-4 \\hat{i} + -2\\hat{j}\\)"] <- 1
 VS_ijk$TogetherQ6 <- 0
-VS_ijk$TogetherQ6[VS_ijk$Q6 == "\\(3 \\hat{i} + -5\\hat{j}\\)"] <- 1
+VS_ijk$TogetherQ6[VS_ijk$Q6 == "\\(3 \\hat{i} + -5 \\hat{j} \\)"] <- 1
 VS_ijk$TogetherQ7 <- 0
 VS_ijk$TogetherQ7[VS_ijk$Q7 == "\\(4 \\hat{i} + 1\\hat{j}\\)"] <- 1
 VS_ijk$TogetherQ8 <- 0
-VS_ijk$TogetherQ8[VS_ijk$Q8 == "\\(-1 \\hat{i} + -6\\hat{j}\\)"] <- 1
+VS_ijk$TogetherQ8[VS_ijk$Q8 == "\\(-1 \\hat{i} + -6 \\hat{j} \\)"] <- 1
 VS_ijk$TogetherQ9 <- 0
 VS_ijk$TogetherQ9[VS_ijk$Q9 == "g.)"] <- 1
+
+# Comment to demo git
