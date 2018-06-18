@@ -21,8 +21,6 @@ UserLanguage = col_skip()))
 
 VS_arrow$PreC <- 0
 VS_arrow$PreC[VS_arrow$Q1 == "h.)"] <- 1
-VS_arrow$PostC <- 0
-VS_arrow$PostC[VS_arrow$Q8 == "h.)"] <- 1
 VS_arrow$PracticeQ2C <- 0
 VS_arrow$PracticeQ2C[VS_arrow$Q2 == "g.)"] <- 1
 VS_arrow$PracticeQ3C <- 0
@@ -35,11 +33,11 @@ VS_arrow$TogetherQ6C <- 0
 VS_arrow$TogetherQ6C[VS_arrow$Q6 == "c.)"] <- 1
 VS_arrow$TogetherQ7C <- 0
 VS_arrow$TogetherQ7C[VS_arrow$Q7 == "g.)"] <- 1
+VS_arrow$PostC <- 0
+VS_arrow$PostC[VS_arrow$Q8 == "h.)"] <- 1
 
 VS_ijk$PreC <- 0
 VS_ijk$PreC[VS_ijk$Q1 == "h.)"] <- 1
-VS_ijk$PostC <- 0
-VS_ijk$PostC[VS_ijk$Q10 == "h.)"] <- 1
 VS_ijk$PracticeQ2 <- 0
 VS_ijk$PracticeQ2[VS_ijk$Q2 == "\\(-4 \\hat{i} + 3\\hat{j}\\)"] <- 1
 VS_ijk$PracticeQ2 <- 0
@@ -58,5 +56,7 @@ VS_ijk$TogetherQ8 <- 0
 VS_ijk$TogetherQ8[VS_ijk$Q8 == "\\(-1 \\hat{i} + -6 \\hat{j} \\)"] <- 1
 VS_ijk$TogetherQ9 <- 0
 VS_ijk$TogetherQ9[VS_ijk$Q9 == "g.)"] <- 1
+VS_ijk$PostC <- 0
+VS_ijk$PostC[VS_ijk$Q10 == "h.)"] <- 1
 
-# Comment to demo git
+# Plot Barcharts of Percent correct for each question
