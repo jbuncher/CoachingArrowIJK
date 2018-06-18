@@ -21,18 +21,18 @@ UserLanguage = col_skip()))
 
 VS_arrow$PreC <- 0
 VS_arrow$PreC[VS_arrow$Q1 == "h.)"] <- 1
-VS_arrow$PracticeQ2C <- 0
-VS_arrow$PracticeQ2C[VS_arrow$Q2 == "g.)"] <- 1
-VS_arrow$PracticeQ3C <- 0
-VS_arrow$PracticeQ3C[VS_arrow$Q3 == "c.)"] <- 1
-VS_arrow$PracticeQ4C <- 0
-VS_arrow$PracticeQ4C[VS_arrow$Q4 == "f.)"] <- 1
-VS_arrow$PracticeQ5C <- 0
-VS_arrow$PracticeQ5C[VS_arrow$Q5 == "e.)"] <- 1
-VS_arrow$TogetherQ6C <- 0
-VS_arrow$TogetherQ6C[VS_arrow$Q6 == "c.)"] <- 1
-VS_arrow$TogetherQ7C <- 0
-VS_arrow$TogetherQ7C[VS_arrow$Q7 == "g.)"] <- 1
+VS_arrow$PracticeQ2 <- 0
+VS_arrow$PracticeQ2[VS_arrow$Q2 == "g.)"] <- 1
+VS_arrow$PracticeQ3 <- 0
+VS_arrow$PracticeQ3[VS_arrow$Q3 == "c.)"] <- 1
+VS_arrow$PracticeQ4 <- 0
+VS_arrow$PracticeQ4[VS_arrow$Q4 == "f.)"] <- 1
+VS_arrow$PracticeQ5 <- 0
+VS_arrow$PracticeQ5[VS_arrow$Q5 == "e.)"] <- 1
+VS_arrow$TogetherQ6 <- 0
+VS_arrow$TogetherQ6[VS_arrow$Q6 == "c.)"] <- 1
+VS_arrow$TogetherQ7 <- 0
+VS_arrow$TogetherQ7[VS_arrow$Q7 == "g.)"] <- 1
 VS_arrow$PostC <- 0
 VS_arrow$PostC[VS_arrow$Q8 == "h.)"] <- 1
 
@@ -59,4 +59,19 @@ VS_ijk$TogetherQ9[VS_ijk$Q9 == "g.)"] <- 1
 VS_ijk$PostC <- 0
 VS_ijk$PostC[VS_ijk$Q10 == "h.)"] <- 1
 
+# Create Sub-tables of the "Correct/Incorrect" Columns we just added
+VS_ijk_correct <- VS_ijk[26:35]
+
+VS_arrow_correct <- VS_arrow[24:31]
+
 # Plot Barcharts of Percent correct for each question
+arrow_colors = c("red", "blue", "blue", "blue", "blue", "blue", "blue", "red")
+arrow_density = c(100, 10, 10, 10, 10, 10, 10, 100)
+arrow_angle = c(0, 45,45,45,45,45, -45,0)
+
+ijk_colors = c("red", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "red")
+ijk_density = c(100, 10, 10, 10, 10, 10, 10, 10, 10, 100)
+ijk_angle = c(0, 45,45,45,45,45,45, -45, -45,0)
+
+barplot(arrow_means, ylim = c(0,1), col = arrow_colors, density = arrow_density, angle = arrow_angle)
+barplot(ijk_means, ylim = c(0,1), col = ijk_colors, density = ijk_density, angle = ijk_angle)
