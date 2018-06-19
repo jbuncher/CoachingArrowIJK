@@ -1,4 +1,6 @@
 library(readr)
+library(ggplot2)
+library(tidyr)
 
 letterResponseLevels = c("a.)","b.)","c.)","d.)","e.)","f.)","g.)","h.)")
 dateTimeFormat = "%Y-%m-%d %H:%M:%S"
@@ -74,7 +76,25 @@ arrow_angle = c(0, 45,45,45,45,45, -45,0)
 
 ijk_colors = c("red", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "red")
 ijk_density = c(100, 10, 10, 10, 10, 10, 10, 10, 10, 100)
-ijk_angle = c(0, 45,45,45,45,45,45, -45, -45,0)
+ijk_angle = c(0, 45, 45, 45, 45, 45, 45, -45, -45,0)
 
 barplot(arrow_means, ylim = c(0,1), col = arrow_colors, density = arrow_density, angle = arrow_angle)
 barplot(ijk_means, ylim = c(0,1), col = ijk_colors, density = ijk_density, angle = ijk_angle)
+
+# If we want to use ggplot2 to make the barchart....
+
+# For the arrow intervention....
+tempdf <- data.frame(arrow_means, row.names = colnames(VS_arrow_correct))
+arr_means_df <- cbind(names = rownames(tempdf), tempdf)
+arr_means_df$names <- factor(arr_means_df$names, levels = c("PreC", "PracticeQ2", "PracticeQ3", "PracticeQ4", "PracticeQ5", "TogetherQ6", "TogetherQ7", "PostC"))
+p <- ggplot(arr_means_df, aes(names, arrow_means))
+p + geom_bar(stat = "identity", fill = arrow_colors) + geom_text(aes(label = sprintf("%0.2f",arr_means_df$arrow_means)), vjust = -0.3) + ylab("Percent Correct") + xlab("") + ggtitle("Arrow Intervention")
+
+# For the ijk intervention....
+tempdf <- data.frame(ijk_means, row.names = colnames(VS_ijk_correct))
+ijk_means_df <- cbind(names = rownames(tempdf), tempdf)
+ijk_means_df$names <- factor(ijk_means_df$names, levels = c("PreC", "PracticeQ2", "PracticeQ3", "PracticeQ4", "PracticeQ5", "TogetherQ6", "TogetherQ7", "TogetherQ8", "TogetherQ9", "PostC"))
+q <- ggplot(ijk_means_df, aes(names, ijk_means))
+q + geom_bar(stat = "identity", fill = ijk_colors) + geom_text(aes(label = sprintf("%0.2f", ijk_means_df$ijk_means)), vjust = -0.3) + ylab("Percent Correct") + xlab("") + ggtitle("ijk Intervention")
+
+
