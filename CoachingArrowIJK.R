@@ -69,6 +69,14 @@ VS_ijk$Q8Conv <- 0
 VS_ijk$Q8Conv <- Q9key[match(VS_ijk$Q8,Q8key)]
 VS_ijk$Q8Q9Consistent[VS_ijk$Q8Conv == VS_ijk$Q9] <- 1
 
+VS_ijk$PracticeMean <- rowMeans(VS_ijk[27:32])
+VS_ijk$TogetherMean <- rowMeans(VS_ijk[33:34])
+
+VS_arrow$PracticeMean <- rowMeans(VS_arrow[24:29])
+VS_arrow$PracticeMean <- VS_arrow$TogetherQ7
+
+VS_arrow$IntType <- "arrow"
+VS_ijk$IntType <- "ijk"
 
 # Create Sub-tables of the "Correct/Incorrect" Columns we just added
 VS_ijk_correct <- VS_ijk[26:35]
