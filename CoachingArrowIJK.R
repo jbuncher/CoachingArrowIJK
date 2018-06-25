@@ -1,6 +1,7 @@
 library(readr)
 library(ggplot2)
 library(tidyr)
+library(lmtest)
 
 letterResponseLevels = c("a.)","b.)","c.)","d.)","e.)","f.)","g.)","h.)")
 dateTimeFormat = "%Y-%m-%d %H:%M:%S"
@@ -78,9 +79,26 @@ VS_arrow$TogetherMean <- VS_arrow$TogetherQ7
 VS_arrow$IntType <- "arrow"
 VS_ijk$IntType <- "ijk"
 
-# Create Sub-tables of the "Correct/Incorrect" Columns we just added
-VS_ijk_correct <- VS_ijk[26:35]
+# Create Table for Logistical Regression Model
+VStemp1 <- with(VS_arrow, cbind(AnonID, IntType, VS_arrow[7], PreC, PracticeMean, TogetherMean, PostC))
+VStemp2 <- with(VS_ijk, cbind(AnonID, IntType, VS_ijk[7], PreC, PracticeMean, TogetherMean, PostC))
+modeldata <- rbind(VStemp1, VStemp2)
 
+# Rename the "Duration (in seconds)" column to something more manageable, "Time"
+colnames(modeldata)[3] <- "Time"
+
+# Create Model Using All Variables, Output Summary, get confidence intervals
+m1 <- with(modeldata, glm(PostC ~ IntType + Time + PreC + PracticeMean + TogetherMean, family = "binomial"))
+summary(m1)
+confint(m1)
+
+# Create Null Model, and compare with our Model
+m0 = with(modeldata,glm( PostC ~1, family = "binomial"))
+lrtest(m0,m1)
+
+
+# Create Sub-tables of the "Correct/Incorrect" Columns for ease of plotting via barcharts
+VS_ijk_correct <- VS_ijk[26:35]
 VS_arrow_correct <- VS_arrow[24:31]
 
 # Plot Barcharts of Percent correct for each question
