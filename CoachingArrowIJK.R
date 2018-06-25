@@ -73,7 +73,7 @@ VS_ijk$PracticeMean <- rowMeans(VS_ijk[27:32])
 VS_ijk$TogetherMean <- rowMeans(VS_ijk[33:34])
 
 VS_arrow$PracticeMean <- rowMeans(VS_arrow[24:29])
-VS_arrow$PracticeMean <- VS_arrow$TogetherQ7
+VS_arrow$TogetherMean <- VS_arrow$TogetherQ7
 
 VS_arrow$IntType <- "arrow"
 VS_ijk$IntType <- "ijk"
