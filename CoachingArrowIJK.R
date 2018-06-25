@@ -60,6 +60,15 @@ VS_ijk$TogetherQ9 <- 0
 VS_ijk$TogetherQ9[VS_ijk$Q9 == "g.)"] <- 1
 VS_ijk$PostC <- 0
 VS_ijk$PostC[VS_ijk$Q10 == "h.)"] <- 1
+VS_ijk$Q8Q9Consistent <- 0
+Q8key = c("\\(-7 \\hat{i} + 6 \\hat{j}\\)", "\\(1 \\hat{i} + 4\\hat{j}\\)", "\\(-7 \\hat{i} + 4\\hat{j}\\)", "\\(6 \\hat{i} + -6\\hat{j}\\)", "\\(7 \\hat{i} + -4\\hat{j}\\)", "\\(1\\hat{i} + 6\\hat{j}\\)", "\\(-1 \\hat{i} + -6 \\hat{j} \\)", "\\(-1 \\hat{i} + -4\\hat{j}\\)")
+Q9key = c("a.)", "b.)", "c.)", "d.)", "e.)", "f.)", "g.)", "h.)")
+
+# Create Columns to see if students were consistent in their answers to Q8 & Q9 in the ijk version
+VS_ijk$Q8Conv <- 0
+VS_ijk$Q8Conv <- Q9key[match(VS_ijk$Q8,Q8key)]
+VS_ijk$Q8Q9Consistent[VS_ijk$Q8Conv == VS_ijk$Q9] <- 1
+
 
 # Create Sub-tables of the "Correct/Incorrect" Columns we just added
 VS_ijk_correct <- VS_ijk[26:35]
@@ -96,5 +105,4 @@ ijk_means_df <- cbind(names = rownames(tempdf), tempdf)
 ijk_means_df$names <- factor(ijk_means_df$names, levels = c("PreC", "PracticeQ2", "PracticeQ3", "PracticeQ4", "PracticeQ5", "TogetherQ6", "TogetherQ7", "TogetherQ8", "TogetherQ9", "PostC"))
 q <- ggplot(ijk_means_df, aes(names, ijk_means))
 q + geom_bar(stat = "identity", fill = ijk_colors) + geom_text(aes(label = sprintf("%0.2f", ijk_means_df$ijk_means)), vjust = -0.3) + ylab("Percent Correct") + xlab("") + ggtitle("ijk Intervention")
-
 
